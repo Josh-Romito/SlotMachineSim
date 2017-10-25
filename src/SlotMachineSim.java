@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SlotMachineSim {
 
-    private static String[] _items = {"Cherries", "Oranges", "Plumbs", "Bells", "Melons", "Bars"};
+    private static String[] _items = {"Cherries", "Cherries", "Cherries", "Cherries", "Cherries", "Cherries"};
     private static List<String> _results = new ArrayList<String>();
     private static Scanner keyboard = new Scanner(System.in);
     private static Random r = new Random();
@@ -36,12 +36,13 @@ public class SlotMachineSim {
             System.out.printf("$%.2f", _payout);
         }
         else
-            System.out.println("You lost it all! HAHAHAA! Try again -.- ");
+            System.out.println("You lost it all! HAHAHAA! Try again! ");
     }
 
     private static double DetermineResults(List<String> results,double dollars) {
-        if(results.get(0) == results.get(1)) {
-            _multiplier = 2;
+
+        if(results.get(0) == results.get(1) && results.get(1) == results.get(2) && results.get(0) == results.get(2)) {
+            _multiplier = 3;
         }
         else if(results.get(1) == results.get(2)) {
             _multiplier = 2 ;
@@ -49,8 +50,8 @@ public class SlotMachineSim {
         else if(results.get(0) == results.get(2)) {
             _multiplier = 2;
         }
-        else if(results.get(0) == results.get(1) && results.get(1) == results.get(2) && results.get(0) == results.get(2)){
-            _multiplier = 3;
+        else if(results.get(0) == results.get(1)){
+            _multiplier = 2;
         }
 
         return _multiplier * dollars;
@@ -84,8 +85,11 @@ public class SlotMachineSim {
         String response = keyboard.next();
         if(response.equalsIgnoreCase("y"))
             keepRunning = true;
-        else if(response.equalsIgnoreCase("n"))
+        else if(response.equalsIgnoreCase("n")) {
             keepRunning = false;
+            System.out.println("Shutting down...");
+        }
+
     }
 
 
