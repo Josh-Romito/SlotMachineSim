@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SlotMachineSim {
 
-    private static String[] _items = {"Cherries", "Cherries", "Cherries", "Cherries", "Cherries", "Cherries"};
+    private static String[] _items = {"Cherries", "Oranges", "Plumbs", "Bells", "Melons", "Bars"};
     private static List<String> _results = new ArrayList<String>();
     private static Scanner keyboard = new Scanner(System.in);
     private static Random r = new Random();
@@ -53,6 +53,8 @@ public class SlotMachineSim {
         else if(results.get(0) == results.get(1)){
             _multiplier = 2;
         }
+        else
+            _multiplier = 0;
 
         return _multiplier * dollars;
     }
